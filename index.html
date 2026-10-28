@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>臺灣民氣初動之刻：林獻堂與臺灣文化協會</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Anime.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Google Fonts: Noto Serif TC & Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sepia: {
+                            50: '#FAF8F5',
+                            100: '#F4EFE6',
+                            200: '#E6DCB8',
+                            300: '#D5C4A1',
+                            700: '#65533A',
+                            800: '#433626',
+                            900: '#2A2117'
+                        },
+                        vermilion: {
+                            DEFAULT: '#A63A2A',
+                            dark: '#852A1C',
+                            light: '#C8513F'
+                        },
+                        paper: '#F7F4EB',
+                        ink: '#1C1917'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['"Noto Sans TC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F7F4EB;
+            color: #1C1917;
+            background-image: radial-gradient(#dcd5c1 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+        .vintage-card {
+            background: #FAF8F5;
+            box-shadow: 6px 6px 0px #2A2117;
+            border: 2px solid #2A2117;
+        }
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-vermilion selection:text-white">
+
+    <!-- 導覽列 Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-paper/90 backdrop-blur-md border-b-2 border-ink z-40 transition-all duration-300 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-serif font-bold text-xl md:text-2xl tracking-wider text-ink flex items-center gap-2">
+                <span class="w-4 h-4 bg-vermilion inline-block rounded-full"></span>
+                臺灣民氣初動之刻
+            </a>
+            <div class="hidden md:flex space-x-6 font-serif font-medium text-sm lg:text-base">
+                <a href="#hero" class="hover:text-vermilion transition-colors">首頁</a>
+                <a href="#highlights" class="hover:text-vermilion transition-colors">五大焦點</a>
+                <a href="#background" class="hover:text-vermilion transition-colors">時代背景</a>
+                <a href="#figures" class="hover:text-vermilion transition-colors">核心人物</a>
+                <a href="#timeline" class="hover:text-vermilion transition-colors">歷史時間軸</a>
+                <a href="#significance" class="hover:text-vermilion transition-colors">歷史意義</a>
+            </div>
+            <button id="ai-modal-btn" class="px-3 py-1.5 bg-ink text-paper text-xs md:text-sm font-medium rounded hover:bg-vermilion transition-colors flex items-center gap-1.5 shadow">
+                <i class="fa-solid fa-robot"></i> AI協作紀錄
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主頁 Hero Section -->
+    <section id="hero" class="min-h-screen pt-24 pb-16 px-4 md:px-8 flex flex-col justify-center items-center relative overflow-hidden border-b-2 border-ink">
+        <div class="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
+            
+            <div class="hero-badge mb-6 inline-block border border-ink bg-sepia-100 px-4 py-1.5 text-xs md:text-sm font-serif tracking-widest text-sepia-800 uppercase shadow-sm">
+                歷史文化數位特展 / 1920-1930s 臺灣啟蒙運動
+            </div>
+            
+            <h1 class="hero-title font-serif font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-ink leading-tight mb-6">
+                林獻堂 <span class="text-vermilion">&</span> 臺灣文化協會
+            </h1>
+            
+            <p class="hero-subtitle font-serif text-lg md:text-2xl text-sepia-800 max-w-3xl mb-10 leading-relaxed">
+                「臺灣人是臺灣人的臺灣。」<br class="hidden sm:inline">
+                在殖民統治的深夜裏，以文化、報刊與講演，點亮臺灣第一盞民主自治的明燈。
+            </p>
+
+            <div class="hero-buttons flex flex-wrap justify-center gap-4">
+                <a href="#highlights" class="px-6 py-3 bg-vermilion text-white font-serif font-bold rounded border-2 border-ink shadow-[4px_4px_0px_#1C1917] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#1C1917] transition-all">
+                    瀏覽網站 5 大展覽重點 <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+                <a href="#timeline" class="px-6 py-3 bg-sepia-100 text-ink font-serif font-bold rounded border-2 border-ink shadow-[4px_4px_0px_#1C1917] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#1C1917] transition-all">
+                    探索歷史時間軸
+                </a>
+            </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="absolute -bottom-10 left-10 opacity-10 text-9xl font-serif font-black pointer-events-none select-none">文化</div>
+        <div class="absolute -top-10 right-10 opacity-10 text-9xl font-serif font-black pointer-events-none select-none">啟蒙</div>
+    </section>
+
+    <!-- NEW SECTION: 本站介紹 5 大重點 Focus Section -->
+    <section id="highlights" class="py-20 px-4 md:px-8 border-b-2 border-ink bg-paper">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-vermilion font-serif font-bold text-sm tracking-widest uppercase">SECTION 01 / EXHIBITION CORE</span>
+                <h2 class="font-serif font-bold text-3xl md:text-5xl text-ink mt-1">本網站介紹之 5 大核心重點</h2>
+                <p class="font-serif text-sepia-700 mt-2 text-sm md:text-base">快速了解 1920 年代臺灣文化啟蒙運動的最重要脈絡</p>
+                <div class="w-16 h-1 bg-vermilion mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Focus 1 -->
+                <div class="scroll-reveal vintage-card p-5 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-xs font-serif font-bold text-vermilion mb-1">KEY POINT 01</div>
+                        <h3 class="font-serif font-bold text-lg text-ink mb-3 border-b border-ink/20 pb-2">非暴力運動轉型</h3>
+                        <p class="text-xs text-sepia-800 leading-relaxed">
+                            西來庵事件後，抗日運動從「武裝流血流汗」轉向以「法律、文化與輿論」為武器的現代非暴力體制內抗爭。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-ink/10 text-right">
+                        <i class="fa-solid fa-shield-halved text-sepia-700"></i>
+                    </div>
+                </div>
+
+                <!-- Focus 2 -->
+                <div class="scroll-reveal vintage-card p-5 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-xs font-serif font-bold text-vermilion mb-1">KEY POINT 02</div>
+                        <h3 class="font-serif font-bold text-lg text-ink mb-3 border-b border-ink/20 pb-2">雙雄領導風格</h3>
+                        <p class="text-xs text-sepia-800 leading-relaxed">
+                            對比溫和沉穩、出資支持留學與法案的「紳商」林獻堂，與充滿行動力、診斷臺灣知識貧乏的「熱血醫師」蔣渭水。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-ink/10 text-right">
+                        <i class="fa-solid fa-user-group text-sepia-700"></i>
+                    </div>
+                </div>
+
+                <!-- Focus 3 -->
+                <div class="scroll-reveal vintage-card p-5 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-xs font-serif font-bold text-vermilion mb-1">KEY POINT 03</div>
+                        <h3 class="font-serif font-bold text-lg text-ink mb-3 border-b border-ink/20 pb-2">臺灣議會請願</h3>
+                        <p class="text-xs text-sepia-800 leading-relaxed">
+                            自1921年起進行15次請願，要求設立「臺灣議會」，主張自治權，此為臺灣史上首次規模最大的憲政民主運動。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-ink/10 text-right">
+                        <i class="fa-solid fa-landmark text-sepia-700"></i>
+                    </div>
+                </div>
+
+                <!-- Focus 4 -->
+                <div class="scroll-reveal vintage-card p-5 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-xs font-serif font-bold text-vermilion mb-1">KEY POINT 04</div>
+                        <h3 class="font-serif font-bold text-lg text-ink mb-3 border-b border-ink/20 pb-2">大眾文化啟蒙</h3>
+                        <p class="text-xs text-sepia-800 leading-relaxed">
+                            文化協會透過巡迴「活動影劇團」、夏季學校、讀報社與《臺灣民報》，把男女平等、衛生與民主觀念推廣至全台鄉村。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-ink/10 text-right">
+                        <i class="fa-solid fa-bullhorn text-sepia-700"></i>
+                    </div>
+                </div>
+
+                <!-- Focus 5 -->
+                <div class="scroll-reveal vintage-card p-5 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-xs font-serif font-bold text-vermilion mb-1">KEY POINT 05</div>
+                        <h3 class="font-serif font-bold text-lg text-ink mb-3 border-b border-ink/20 pb-2">覺醒與深遠遺產</h3>
+                        <p class="text-xs text-sepia-800 leading-relaxed">
+                            雖然因左右路線分裂與軍國主義壓迫而停擺，但啟蒙運動成功點燃「臺灣人意識」，奠定本土文學、藝術與現代公民社會基石。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-ink/10 text-right">
+                        <i class="fa-solid fa-seedling text-sepia-700"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 背景介紹 Section -->
+    <section id="background" class="py-20 px-4 md:px-8 border-b-2 border-ink bg-sepia-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b-2 border-ink/20 pb-4">
+                <div>
+                    <span class="text-vermilion font-serif font-bold text-sm tracking-widest uppercase">SECTION 02</span>
+                    <h2 class="font-serif font-bold text-3xl md:text-4xl text-ink mt-1">時代背景：從武裝抗日到文化啟蒙</h2>
+                </div>
+                <p class="font-serif text-sepia-700 mt-2 md:mt-0 text-sm md:text-base">大正民主浪潮與一次世界大戰後的民族自決思潮</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="scroll-reveal vintage-card p-6 rounded-none relative">
+                    <div class="w-10 h-10 bg-vermilion text-white font-serif font-bold flex items-center justify-center text-lg mb-4 border border-ink">一</div>
+                    <h3 class="font-serif font-bold text-xl mb-3 text-ink">武裝抗爭的終結</h3>
+                    <p class="text-sm leading-relaxed text-sepia-800">
+                        1915年西來庵事件後，傳統武裝抗日遭到總督府殘酷鎮壓。臺灣知識份子意識到，僅憑武力無法對抗現代化帝國，抗爭形式亟需轉型。
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="scroll-reveal vintage-card p-6 rounded-none relative">
+                    <div class="w-10 h-10 bg-vermilion text-white font-serif font-bold flex items-center justify-center text-lg mb-4 border border-ink">二</div>
+                    <h3 class="font-serif font-bold text-xl mb-3 text-ink">民族自決與留學生思潮</h3>
+                    <p class="text-sm leading-relaxed text-sepia-800">
+                        第一次世界大戰後，威爾遜提出「民族自決」。赴日留學的臺灣青年（如蔡培火、蔣渭水、林獻堂）在東京吸收近代民主政治思想，奠定文化運動基礎。
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="scroll-reveal vintage-card p-6 rounded-none relative">
+                    <div class="w-10 h-10 bg-vermilion text-white font-serif font-bold flex items-center justify-center text-lg mb-4 border border-ink">三</div>
+                    <h3 class="font-serif font-bold text-xl mb-3 text-ink">臺灣議會設置請願運動</h3>
+                    <p class="text-sm leading-relaxed text-sepia-800">
+                        自1921年起長達14年、共15次的請願，要求日本帝國議會同意在臺灣設立具民意基礎的自治議會，成為非暴力政治運動的最高峰。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Focus Feature -->
+            <div class="scroll-reveal mt-12 bg-sepia-100 border-2 border-ink p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                <img src="https://placehold.co/400x300/433626/FAF8F5?text=%E8%87%BA%E7%83%AF%E6%96%87%E2%80%8B%E化%E5%8D%94%E6%9C%83%E6%9C%83%E5%A0%B1" alt="臺灣文化協會會報歷史圖像" class="w-full md:w-1/3 border-2 border-ink shadow hover:scale-[1.02] transition-transform">
+                <div class="w-full md:w-2/3">
+                    <span class="bg-vermilion/10 text-vermilion text-xs font-bold px-2 py-1 rounded border border-vermilion/30">歷史關鍵刻度</span>
+                    <h3 class="font-serif font-bold text-2xl text-ink mt-2 mb-3">1921年10月17日：臺灣文化協會創立</h3>
+                    <p class="text-sepia-800 text-sm md:text-base leading-relaxed mb-4">
+                        於臺北市大稻埕靜修女子學校舉行成立大會。推舉霧峰林家紳商**林獻堂**為總理，**蔣渭水**專務理事。協會以「助長臺灣文化之發達」為宗旨，發行《臺灣民報》、舉辦文化講座、讀報社與夏季學校，開啟大規模民眾啟蒙運動。
+                    </p>
+                    <div class="font-serif italic text-sm text-sepia-700 border-l-4 border-vermilion pl-3 py-1">
+                        「臺灣人現正患著『知識營養不良症』，唯有實施文化啟蒙方為對症良藥。」—— 蔣渭水《臨床講義》
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心人物 Section -->
+    <section id="figures" class="py-20 px-4 md:px-8 border-b-2 border-ink">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-vermilion font-serif font-bold text-sm tracking-widest uppercase">SECTION 03</span>
+                <h2 class="font-serif font-bold text-3xl md:text-5xl text-ink mt-1">歷史領航者：核心人物</h2>
+                <div class="w-16 h-1 bg-vermilion mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Person 1: 林獻堂 -->
+                <div class="scroll-reveal vintage-card p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                    <div class="w-36 h-48 flex-shrink-0 border-2 border-ink overflow-hidden bg-sepia-200 relative">
+                        <img src="https://placehold.co/180x240/2A2117/FAF8F5?text=%E6%9E%97%E7%8D%BB%E5%A0%82+%E8%82%96%E2%80%8B%E5%83%8F" alt="林獻堂先生" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-vermilion uppercase tracking-wider">臺灣議會之父 / 文化頭人</span>
+                        <h3 class="font-serif font-bold text-2xl text-ink mb-2">林獻堂 (1881 - 1956)</h3>
+                        <p class="text-xs text-sepia-700 mb-3 font-serif">出身台中霧峰林家，溫和沉穩的非暴力抗爭領袖</p>
+                        <p class="text-sm text-sepia-800 leading-relaxed mb-4">
+                            憑藉龐大財力與社會聲望，長年資助臺灣青年赴日留學及發起各類社會運動。倡導「漢民族文化主體性」與「溫和自治」，為臺灣議會設置請願運動的核心精神支柱。
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-sepia-200 text-ink px-2 py-1 border border-ink">資助臺灣民報</span>
+                            <span class="bg-sepia-200 text-ink px-2 py-1 border border-ink">文協總理</span>
+                            <span class="bg-sepia-200 text-ink px-2 py-1 border border-ink">創辦台中一中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Person 2: 蔣渭水 -->
+                <div class="scroll-reveal vintage-card p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                    <div class="w-36 h-48 flex-shrink-0 border-2 border-ink overflow-hidden bg-sepia-200 relative">
+                        <img src="https://placehold.co/180x240/2A2117/FAF8F5?text=%E8%94%A4%E6%B8%AD%E6%B0%B4+%E8%82%96%E2%80%8B%E5%83%8F" alt="蔣渭水醫師" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-vermilion uppercase tracking-wider">臺灣的孫中山 / 行動革命家</span>
+                        <h3 class="font-serif font-bold text-2xl text-ink mb-2">蔣渭水 (1890 - 1931)</h3>
+                        <p class="text-xs text-sepia-700 mb-3 font-serif">宜蘭出身，大稻埕大安醫院醫師，熱情強烈的行動者</p>
+                        <p class="text-sm text-sepia-800 leading-relaxed mb-4">
+                            臺灣文化協會實際執行核心，發表知名《臨床講義》診斷臺灣人的文化貧乏。後續成立「臺灣民眾黨」與「臺灣工友總聯盟」，將文化運動推向廣大勞工與農民。
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-sepia-200 text-ink px-2 py-1 border border-ink">發表臨床講義</span>
+                            <span class="bg-sepia-200 text-ink px-2 py-1 border border-ink">創立臺灣民眾黨</span>
+                            <span class="bg-sepia-200 text-ink px-2 py-1 border border-ink">大稻埕文化基地</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 互動時間軸 Section -->
+    <section id="timeline" class="py-20 px-4 md:px-8 bg-sepia-100 border-b-2 border-ink">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-vermilion font-serif font-bold text-sm tracking-widest uppercase">SECTION 04</span>
+                <h2 class="font-serif font-bold text-3xl md:text-5xl text-ink mt-1">歷史發展脈絡 (1914 - 1931)</h2>
+                <p class="font-serif text-sepia-700 mt-2 text-sm md:text-base">點擊下方時間節點，開啟詳細歷史現場檔案</p>
+            </div>
+
+            <!-- Timeline Nav Slider -->
+            <div class="relative mb-10 overflow-x-auto no-scrollbar pb-6">
+                <div class="flex min-w-[700px] justify-between items-center relative px-8">
+                    <div class="absolute left-8 right-8 top-1/2 h-1 bg-ink/30 -translate-y-1/2 z-0"></div>
+                    <div id="timeline-progress" class="absolute left-8 top-1/2 h-1 bg-vermilion -translate-y-1/2 z-0 transition-all duration-500 w-0"></div>
+
+                    <!-- Timeline Nodes -->
+                    <button class="timeline-node group relative z-10 focus:outline-none" data-index="0">
+                        <div class="node-circle w-10 h-10 rounded-full border-2 border-ink bg-paper text-ink font-serif font-bold flex items-center justify-center transition-all group-hover:bg-vermilion group-hover:text-white group-hover:scale-110">14</div>
+                        <span class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs font-serif font-bold whitespace-nowrap">1914 板垣同化會</span>
+                    </button>
+
+                    <button class="timeline-node group relative z-10 focus:outline-none" data-index="1">
+                        <div class="node-circle w-10 h-10 rounded-full border-2 border-ink bg-paper text-ink font-serif font-bold flex items-center justify-center transition-all group-hover:bg-vermilion group-hover:text-white group-hover:scale-110">21</div>
+                        <span class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs font-serif font-bold whitespace-nowrap">1921 議會請願 & 文協</span>
+                    </button>
+
+                    <button class="timeline-node group relative z-10 focus:outline-none" data-index="2">
+                        <div class="node-circle w-10 h-10 rounded-full border-2 border-ink bg-paper text-ink font-serif font-bold flex items-center justify-center transition-all group-hover:bg-vermilion group-hover:text-white group-hover:scale-110">23</div>
+                        <span class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs font-serif font-bold whitespace-nowrap">1923 治警事件</span>
+                    </button>
+
+                    <button class="timeline-node group relative z-10 focus:outline-none" data-index="3">
+                        <div class="node-circle w-10 h-10 rounded-full border-2 border-ink bg-paper text-ink font-serif font-bold flex items-center justify-center transition-all group-hover:bg-vermilion group-hover:text-white group-hover:scale-110">27</div>
+                        <span class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs font-serif font-bold whitespace-nowrap">1927 文協分裂</span>
+                    </button>
+
+                    <button class="timeline-node group relative z-10 focus:outline-none" data-index="4">
+                        <div class="node-circle w-10 h-10 rounded-full border-2 border-ink bg-paper text-ink font-serif font-bold flex items-center justify-center transition-all group-hover:bg-vermilion group-hover:text-white group-hover:scale-110">31</div>
+                        <span class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs font-serif font-bold whitespace-nowrap">1931 運動低潮</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Content Container -->
+            <div id="timeline-content-card" class="vintage-card p-6 md:p-10 transition-all">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 歷史意義與影響 Section -->
+    <section id="significance" class="py-20 px-4 md:px-8 border-b-2 border-ink">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b-2 border-ink/20 pb-4">
+                <div>
+                    <span class="text-vermilion font-serif font-bold text-sm tracking-widest uppercase">SECTION 05</span>
+                    <h2 class="font-serif font-bold text-3xl md:text-4xl text-ink mt-1">歷史意義與深遠影響</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="scroll-reveal bg-sepia-50 p-6 border-2 border-ink shadow-[4px_4px_0px_#1C1917]">
+                    <i class="fa-solid fa-book-open text-3xl text-vermilion mb-4"></i>
+                    <h3 class="font-serif font-bold text-xl mb-2 text-ink">大眾文化啟蒙</h3>
+                    <p class="text-sm text-sepia-800 leading-relaxed">
+                        透過巡迴活動劇團、夏季學校與通俗講座，將民主、衛生、男女平等與新文學思想帶入基層鄉鎮。
+                    </p>
+                </div>
+
+                <div class="scroll-reveal bg-sepia-50 p-6 border-2 border-ink shadow-[4px_4px_0px_#1C1917]">
+                    <i class="fa-solid fa-newspaper text-3xl text-vermilion mb-4"></i>
+                    <h3 class="font-serif font-bold text-xl mb-2 text-ink">臺灣人的喉舌</h3>
+                    <p class="text-sm text-sepia-800 leading-relaxed">
+                        《臺灣民報》成為日治時期臺灣人唯一發聲的報紙媒介，被譽為「臺灣人唯一的喉舌」，記錄了當時的抗爭與社會百態。
+                    </p>
+                </div>
+
+                <div class="scroll-reveal bg-sepia-50 p-6 border-2 border-ink shadow-[4px_4px_0px_#1C1917]">
+                    <i class="fa-solid fa-scale-balanced text-3xl text-vermilion mb-4"></i>
+                    <h3 class="font-serif font-bold text-xl mb-2 text-ink">公民意識覺醒</h3>
+                    <p class="text-sm text-sepia-800 leading-relaxed">
+                        從臣民思想轉變為公民意識，奠定了臺灣近代政治與社會運動的雛形，對後世民主發展影響極為深遠。
+                    </p>
+                </div>
+
+                <div class="scroll-reveal bg-sepia-50 p-6 border-2 border-ink shadow-[4px_4px_0px_#1C1917]">
+                    <i class="fa-solid fa-feather-pointed text-3xl text-vermilion mb-4"></i>
+                    <h3 class="font-serif font-bold text-xl mb-2 text-ink">新文學與藝術</h3>
+                    <p class="text-sm text-sepia-800 leading-relaxed">
+                        催生了臺灣新文學運動（如賴和、楊雲萍等），用文字寫下臺灣人的苦難與抵抗，開啟本土文學黃金時代。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 資料來源 & 延伸閱讀 Section -->
+    <section id="sources" class="py-16 px-4 md:px-8 bg-sepia-800 text-paper border-b-2 border-ink">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl text-paper mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-bookmark text-vermilion"></i> 參考資料來源與延伸閱讀
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-sepia-300 font-serif">
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-2">
+                        <span class="text-vermilion">■</span>
+                        <span><strong>國史館臺灣文献館：</strong>《日治時期臺灣社會運動史 - 臺灣文化協會篇》</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-vermilion">■</span>
+                        <span><strong>中央研究院臺灣史研究所：</strong>《林獻堂環球遊記》與日記數位典藏資料庫</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-vermilion">■</span>
+                        <span><strong>國立臺灣歷史博物館：</strong>「狂飆年代：臺灣文化協會一百週年」數位特展展覽清單</span>
+                    </li>
+                </ul>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-2">
+                        <span class="text-vermilion">■</span>
+                        <span><strong>書籍文獻：</strong>伊藤潔 著，《臺灣：四百年歷史與展望》，台北：前衛出版社。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-vermilion">■</span>
+                        <span><strong>影音推薦：</strong>公視紀錄片《臺灣民主地圖 - 蔣渭水與文化協會》</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 Footer -->
+    <footer class="py-8 px-4 text-center bg-ink text-sepia-300 text-xs font-serif">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                © 2026 歷史文化主題網站作業企畫 | 網頁設計與 AI 協作專案
+            </div>
+            <div>
+                設計風格：復古檔案 / 博物館沉浸體驗 | 技術棧：Tailwind CSS + Anime.js
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI 協作紀錄 Modal -->
+    <div id="ai-modal" class="fixed inset-0 bg-ink/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-paper border-2 border-ink max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 md:p-8 shadow-[8px_8px_0px_#1C1917] relative">
+            <button id="ai-modal-close" class="absolute top-4 right-4 text-ink hover:text-vermilion font-bold text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 border-b-2 border-ink pb-4 mb-6">
+                <i class="fa-solid fa-robot text-vermilion text-2xl"></i>
+                <div>
+                    <h3 class="font-serif font-bold text-2xl text-ink">AI 協作過程紀錄檔 (Human-AI Feedback Loop)</h3>
+                    <p class="text-xs text-sepia-700">依據課程作業規範，保留 Prompt 提示詞與檢視修正紀錄</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-sm font-sans text-ink">
+                <!-- Record 1 -->
+                <div class="bg-sepia-100 p-4 border border-ink">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-serif font-bold text-vermilion">階段 01：主題企畫與架構整理</span>
+                        <span class="text-xs bg-sepia-200 px-2 py-0.5 rounded border border-ink">Prompt #1</span>
+                    </div>
+                    <p class="text-xs font-mono bg-paper p-2 border border-ink/30 mb-2">
+                        "請幫我挑選一個適合的臺灣歷史文化主題，符合作業規範，並規劃出 Hero、5大重點、時代背景、核心人物、歷史時間軸與歷史意義。"
+                    </p>
+                    <p class="text-xs text-sepia-800">
+                        <strong>檢驗與修正：</strong> AI 建議了「林獻堂與臺灣文化協會」，劃分出 5 大核心知識點，符合復古歷史風格的沉浸敘事需求。
+                    </p>
+                </div>
+
+                <!-- Record 2 -->
+                <div class="bg-sepia-100 p-4 border border-ink">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-serif font-bold text-vermilion">階段 02：前端介面與樣式生成</span>
+                        <span class="text-xs bg-sepia-200 px-2 py-0.5 rounded border border-ink">Prompt #2</span>
+                    </div>
+                    <p class="text-xs font-mono bg-paper p-2 border border-ink/30 mb-2">
+                        "請使用 Tailwind CSS 設計一個具有『復古老報紙/檔案感』的單頁版面，主色調為米色、深棕色與漆赤色，並使用 Serif 典雅字體。"
+                    </p>
+                    <p class="text-xs text-sepia-800">
+                        <strong>檢驗與修正：</strong> 微調了陰影樣式為硬邊框 (`shadow-[4px_4px_0px_#1C1917]`)，增強日治時期印刷品與現代編輯雜誌風格結合的視覺質感。
+                    </p>
+                </div>
+
+                <!-- Record 3 -->
+                <div class="bg-sepia-100 p-4 border border-ink">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-serif font-bold text-vermilion">階段 03：Anime.js 互動動畫設計</span>
+                        <span class="text-xs bg-sepia-200 px-2 py-0.5 rounded border border-ink">Prompt #3</span>
+                    </div>
+                    <p class="text-xs font-mono bg-paper p-2 border border-ink/30 mb-2">
+                        "請使用 Anime.js 設計 3 種互動效果：首頁文字淡入與位移、時間軸點擊切換時的卡片動畫、以及頁面滾動時的 Reveal 進場效果。"
+                    </p>
+                    <p class="text-xs text-sepia-800">
+                        <strong>檢驗與修正：</strong> 修正 IntersectionObserver 觸發 Anime.js 的彈性邏輯，確保在手機與電腦上滾動瀏覽時動畫皆順暢播放。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-ink/20 text-right">
+                <button id="ai-modal-close-btn" class="px-5 py-2 bg-ink text-paper text-sm font-serif font-bold hover:bg-vermilion transition-colors">
+                    關閉面板
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript code -->
+    <script>
+        // 歷史時間軸資料 Data
+        const timelineData = [
+            {
+                year: "1914 年",
+                title: "臺灣同化會成立 (林獻堂與板垣退助)",
+                desc: "霧峰林家林獻堂邀請日本前內務大臣板垣退助伯爵來台創立「臺灣同化會」，倡導同化主義與平等待遇。雖不久即遭總督府解散，卻是臺灣近代同胞自覺與政治結社的起點。",
+                tag: "啟蒙萌芽期",
+                img: "https://placehold.co/500x300/433626/FAF8F5?text=1914+%E6%9D%BF%E2%80%8B%E5%9E%A3%E9%80%80%E5%8A%A9%E8%88%87%E6%9E%97%E7%8D%BB%E5%A0%82"
+            },
+            {
+                year: "1921 年 10 月 17 日",
+                title: "臺灣文化協會於臺北靜修女子學校創立",
+                desc: "林獻堂任總理、蔣渭水任專務理事。成立大會盛況空前，通過會則並確立「助長臺灣文化之發達」理念。開始巡迴全台舉辦文化講演會、設置讀報社，啟蒙大眾思想。",
+                tag: "黃金時代起點",
+                img: "https://placehold.co/500x300/433626/FAF8F5?text=1921+%E8%87%BA%E7%83%AF%E6%96%87%E2%80%8B%E化%E5%8D%94%E6%9C%83%E6%88%90%E7%AB%8B"
+            },
+            {
+                year: "1923 年 12 月",
+                title: "治警事件 (政治壓迫與團結)",
+                desc: "臺灣人欲依法成立「臺灣議會期成同盟會」，總督府發動大逮捕，蔣渭水、蔡培火等人遭逮捕入獄。林獻堂全程奔走聲援。審判過程反而成為宣揚臺灣人自治理念的絕佳舞台。",
+                tag: "歷史轉折點",
+                img: "https://placehold.co/500x300/433626/FAF8F5?text=1923+%E6%B2%BB%E2%80%8B%E8%AD%A6%E4%BA%8B%E4%BB%B6%E5%AF%A9%E5%88%A4"
+            },
+            {
+                year: "1927 年 1 月",
+                title: "文協分裂與路線轉向",
+                desc: "隨著國際左傾思潮引入，文化協會內部對抗爭路線產生分歧。連溫卿等左派取得領導權，蔣渭水、林獻堂等右派退會，另組「臺灣民眾黨」，文協走向階級運動。",
+                tag: "路線分歧",
+                img: "https://placehold.co/500x300/433626/FAF8F5?text=1927+%E8%B7%AF%E7%B7%9A%E5%88%86%E2%80%8B%E6%AD%A7%E8%88%87%E6%94%B9%E7%B5%84"
+            },
+            {
+                year: "1931 年",
+                title: "軍國主義抬頭與運動低潮",
+                desc: "九一八事變爆發，日本軍國主義全面掌控政府。臺灣民眾黨遭強制解散，蔣渭水病逝，文化協會活動停擺。臺灣近代黃金啟蒙年代暫時劃下句點，但民主種子已深植人心。",
+                tag: "時代終章",
+                img: "https://placehold.co/500x300/433626/FAF8F5?text=1931+%E7%85%A7%E4%BA%AE%E6%9A%97%E夜%E7%9A%84%E7%87%90%E7%85%A7"
+            }
+        ];
+
+        // 渲染時間軸卡片 Function
+        function renderTimelineCard(index) {
+            const item = timelineData[index];
+            const container = document.getElementById('timeline-content-card');
+            
+            // Render HTML
+            container.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-7">
+                        <div class="inline-block bg-vermilion text-white text-xs font-serif font-bold px-3 py-1 mb-3 border border-ink">
+                            ${item.year} ■ ${item.tag}
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl md:text-3xl text-ink mb-4">${item.title}</h3>
+                        <p class="text-sepia-800 leading-relaxed text-sm md:text-base mb-6">${item.desc}</p>
+                        <div class="flex items-center gap-2 text-xs text-sepia-700 font-serif">
+                            <i class="fa-solid fa-circle-info text-vermilion"></i>
+                            <span>點擊上方其他年份可切換不同歷史階段</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-5">
+                        <img src="${item.img}" alt="${item.title}" class="w-full h-auto border-2 border-ink shadow-[4px_4px_0px_#1C1917] rounded-none">
+                    </div>
+                </div>
+            `;
+
+            // Anime.js Animation: Timeline content transition
+            anime({
+                targets: '#timeline-content-card > div',
+                opacity: [0, 1],
+                translateY: [15, 0],
+                easing: 'easeOutQuad',
+                duration: 400
+            });
+
+            // Update node UI active states
+            const nodes = document.querySelectorAll('.timeline-node');
+            const progress = document.getElementById('timeline-progress');
+            
+            nodes.forEach((node, idx) => {
+                const circle = node.querySelector('.node-circle');
+                if (idx === index) {
+                    circle.classList.add('bg-vermilion', 'text-white', 'scale-110');
+                    circle.classList.remove('bg-paper', 'text-ink');
+                } else {
+                    circle.classList.remove('bg-vermilion', 'text-white', 'scale-110');
+                    circle.classList.add('bg-paper', 'text-ink');
+                }
+            });
+
+            // Update Progress bar width
+            const percentage = (index / (timelineData.length - 1)) * 100;
+            progress.style.width = `${percentage}%`;
+        }
+
+        // Initialize App on Window Load
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            // Anime.js Animation 01: Hero Section Reveal
+            anime.timeline({ easing: 'easeOutExpo' })
+                .add({
+                    targets: '.hero-badge',
+                    opacity: [0, 1],
+                    translateY: [-20, 0],
+                    duration: 600
+                })
+                .add({
+                    targets: '.hero-title',
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    duration: 800
+                }, '-=400')
+                .add({
+                    targets: '.hero-subtitle',
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 700
+                }, '-=500')
+                .add({
+                    targets: '.hero-buttons',
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 600
+                }, '-=400');
+
+            // Init Timeline
+            renderTimelineCard(1); // Default to 1921 (index 1)
+
+            // Timeline node click listeners
+            document.querySelectorAll('.timeline-node').forEach((node) => {
+                node.addEventListener('click', (e) => {
+                    const idx = parseInt(node.getAttribute('data-index'));
+                    renderTimelineCard(idx);
+                });
+            });
+
+            // Anime.js Animation 03: Scroll Reveal using IntersectionObserver
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0, 1],
+                            translateY: [30, 0],
+                            duration: 700,
+                            easing: 'easeOutCubic'
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            scrollElements.forEach((el) => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+
+            // AI Modal Trigger Logic
+            const aiBtn = document.getElementById('ai-modal-btn');
+            const aiModal = document.getElementById('ai-modal');
+            const aiClose = document.getElementById('ai-modal-close');
+            const aiCloseBtn = document.getElementById('ai-modal-close-btn');
+
+            function toggleModal(show) {
+                if (show) {
+                    aiModal.classList.remove('hidden');
+                    anime({
+                        targets: aiModal.firstElementChild,
+                        scale: [0.9, 1],
+                        opacity: [0, 1],
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+                } else {
+                    aiModal.classList.add('hidden');
+                }
+            }
+
+            aiBtn.addEventListener('click', () => toggleModal(true));
+            aiClose.addEventListener('click', () => toggleModal(false));
+            aiCloseBtn.addEventListener('click', () => toggleModal(false));
+            
+            aiModal.addEventListener('click', (e) => {
+                if (e.target === aiModal) toggleModal(false);
+            });
+        });
+    </script>
+</body>
+</html>
